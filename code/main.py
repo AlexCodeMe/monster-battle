@@ -26,12 +26,18 @@ class Game:
         self.opponent = Opponent(opponent_name, self.front_surfs[opponent_name], self.all_sprites)
         
         # ui
-        self.ui = UI(self.monster, self.player_monsters)
+        self.ui = UI(self.monster, self.player_monsters, self.simple_surfs, self.get_input)
+        
+    def get_input(self, state, data):
+        print(state)
+        print(data)
+        
         
     def import_assets(self):
         self.back_surfs = folder_importer(join('images', 'back'))
         self.front_surfs = folder_importer(join('images', 'front'))
         self.bg_surfs = folder_importer(join('images', 'other'))
+        self.simple_surfs = folder_importer(join('images', 'simple'))
         
     def draw_monster_floor(self):
         for sprite in self.all_sprites:
